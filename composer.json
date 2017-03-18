@@ -1,6 +1,6 @@
 {
-  "name": "takeoo/pdf",
-  "description": "HTML to PDF render",
+  "name": "takeoo/zend-pdf",
+  "description": "Create pdf from view in zend framework 2",
   "authors": [
     {
       "name": "Jan Mrhar",
