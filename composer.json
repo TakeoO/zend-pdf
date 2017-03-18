@@ -10,8 +10,8 @@
   "require": {
     "zendframework/zend-view": "2.4.*"
   },
-  "autoloader": {
-    "psr4": {
+  "autoload": {
+    "psr-4": {
       "Takeoo\\Pdf\\": "src/"
     }
   }
