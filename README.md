@@ -2,7 +2,7 @@
 
 Create pdf from view in ZendFramework 2
 
-
+Works on zend framework v2.4.*
 ## Requirements
 
  - wkhtmltopdf installed on your server
@@ -29,6 +29,9 @@ Create pdf from view in ZendFramework 2
      ```bash
       composer require takeoo/zend-pdf
       ```
+     
+ - Add "Takeoo\\Pdf" to 'modules' array in application.config.php
+
 ## Usage
  - Takeoo\Zend-pdf will create service throughout service manager, so it is available in serviceLocator as 'PdfCreator';
 
