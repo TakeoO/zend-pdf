@@ -293,5 +293,14 @@ class PdfCreator
     $this->cleanUp();
   }
 
+  /**
+   * @param string $pdfFileName
+   * @return PdfCreator
+   */
+  public function setPdfFileName (string $pdfFileName): PdfCreator
+  {
+    $this->pdfFileName = $pdfFileName;
+    return $this;
+  }
 
 }
