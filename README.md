@@ -55,7 +55,7 @@ Create pdf from view in ZendFramework 2
        OR you can directly pass already created view model
        
        ```php
-          $pdfCreator->createHtmlFromViewModel($viewModel);
+       $pdfCreator->createHtmlFromViewModel($viewModel);
        ```
    
    - Output
@@ -67,32 +67,32 @@ Create pdf from view in ZendFramework 2
         -  get file handle
         
            ```php
-              $pdfCreator->writePdf();
+           $pdfCreator->writePdf();
            ```
            
      **NOTE:** Both above functions will save file to your disk
          
    - Get file path
        ```php
-         $pdfCreator->getFilePath();
+       $pdfCreator->getFilePath();
        ```
        
    - By default all files are generated to your project root into "{Ymd_His}.pdf"
    
    - Change file destination
         ```php
-             $pdfCreator->setPdfFileName('path/to/desired/folder/nameofyourfile.pdf');
+        $pdfCreator->setPdfFileName('path/to/desired/folder/nameofyourfile.pdf');
         ```
         
         
-   **NOTE:** All functions with public scope (with exception of output() and writePdf()) fluent, so you can chain all functions:
+   **NOTE:** All functions with public scope (with exception of output() and writePdf()) are fluent, so you can chain all functions:
    
    ```php
-       $pdfCreator->setLayoutTemplate('layout/pdf-layout')
-         ->createHtml('view', ['variable1' => $variable1Value])
-         ->setPdfFileName('./../file.pdf')
-         ->setHasXvfb(false)
-         ->output();
+   $pdfCreator->setLayoutTemplate('layout/pdf-layout')
+     ->createHtml('view', ['variable1' => $variable1Value])
+     ->setPdfFileName('./../file.pdf')
+     ->setHasXvfb(false)
+     ->output();
    ```
    
    
@@ -102,9 +102,8 @@ Create pdf from view in ZendFramework 2
    
 ```php
 $pdfCreator->setHasXvfb(false);
-
 ```
-    
+        
   
      
      
