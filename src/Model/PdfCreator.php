@@ -222,8 +222,8 @@ class PdfCreator
     if ($this->isHasXvfb())
       $command = $this->xvfb;
 
-    $commandArgs = str_replace('[SOURCE]', $this->tempFileName, $this->commandArgs);
-    $commandArgs = str_replace('[TARGET]', $this->pdfFileName, $commandArgs);
+    $commandArgs = str_replace('[SOURCE]', escapeshellarg($this->tempFileName), $this->commandArgs);
+    $commandArgs = str_replace('[TARGET]', escapeshellarg($this->pdfFileName), $commandArgs);
 
     $this->command = trim($command . ' ' . $commandArgs);
 
