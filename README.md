@@ -43,23 +43,19 @@ Create pdf from view in ZendFramework 2
    PdfCreator uses ViewResolver which is auto-magically injected to PhpRenderer if have MVC application, so you can use any view or layout you have in your app!
    - Set layout
    
-   ```php
-    $pdfCreator->setLayoutTemplate('layout/pdf-template');
-   ```
-   - Add view as you would in your response, just pass name and variables to *createHtml()* function
-   
        ```php
-       
-       $pdfCreator->createHtml('path/to/view', ['variableName' => $variableValue]);
-       
+        $pdfCreator->setLayoutTemplate('layout/pdf-template');
        ```
+       - Add view as you would in your response, just pass name and variables to *createHtml()* function
        
+       ```php
+       $pdfCreator->createHtml('path/to/view', ['variableName' => $variableValue]);
+       ```
+           
        OR you can directly pass already created view model
        
        ```php
-          
           $pdfCreator->createHtmlFromViewModel($viewModel);
-          
        ```
    
    - Output
@@ -74,7 +70,7 @@ Create pdf from view in ZendFramework 2
               $pdfCreator->writePdf();
            ```
            
-         *NOTE:* Both above functions will save file to your disk
+     **NOTE:** Both above functions will save file to your disk
          
    - Get file path
        ```php
