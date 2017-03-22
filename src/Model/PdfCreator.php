@@ -18,6 +18,8 @@ class PdfCreator
 
   protected $xvfb = 'xvfb-run --server-args="-screen 0, 1240x860x24"';
 
+  protected $marginCommand = ' --margin-%s %s';
+
   /** @var string $tempFileName */
   protected $tempFileName;
 
@@ -29,6 +31,10 @@ class PdfCreator
 
   /** @var PhpRenderer */
   private $viewRenderer = null;
+
+  private $margins = [];
+
+  private $allowedMargins = ['top', 'bottom', 'left', 'right'];
 
   /** @var string $layoutTemplate */
   private $layoutTemplate = 'layout/layout';
@@ -225,7 +231,12 @@ class PdfCreator
     $commandArgs = str_replace('[SOURCE]', escapeshellarg($this->tempFileName), $this->commandArgs);
     $commandArgs = str_replace('[TARGET]', escapeshellarg($this->pdfFileName), $commandArgs);
 
-    $this->command = trim($command . ' ' . $commandArgs);
+    if (count($this->margins))
+      foreach ($this->margins as $position => $value)
+        $commandArgs .= sprintf($this->marginCommand, $position, $value);
+
+
+    $this->command = $command;
 
     return $this;
   }
@@ -300,6 +311,20 @@ class PdfCreator
   public function setPdfFileName (string $pdfFileName): PdfCreator
   {
     $this->pdfFileName = $pdfFileName;
+    return $this;
+  }
+
+  /**
+   * @param $position
+   * @param $margin
+   * @return PdfCreator
+   * @internal param array $margins
+   */
+  public function setMargins ($position, $margin)
+  {
+    if (in_array($position, $this->allowedMargins) && is_numeric($margin))
+      $this->margins[$position] = $margin;
+
     return $this;
   }
 
