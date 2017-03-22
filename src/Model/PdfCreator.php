@@ -324,7 +324,7 @@ class PdfCreator
   public function setMargins ($position, $margin)
   {
     if (in_array($position, $this->allowedMargins) && is_numeric($margin))
-      $this->margins[$position] = $margin;
+      $this->margins[$position] = $margin . 'mm';
 
     return $this;
   }
