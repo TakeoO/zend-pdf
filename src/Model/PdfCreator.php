@@ -228,15 +228,16 @@ class PdfCreator
     if ($this->isHasXvfb())
       $command = $this->xvfb;
 
-    $commandArgs = str_replace('[SOURCE]', escapeshellarg($this->tempFileName), $this->commandArgs);
-    $commandArgs = str_replace('[TARGET]', escapeshellarg($this->pdfFileName), $commandArgs);
-
+    $margins = '';
     if (count($this->margins))
       foreach ($this->margins as $position => $value)
-        $commandArgs .= sprintf($this->marginCommand, $position, $value);
+        $margins .= sprintf($this->marginCommand, $position, $value);
 
+    $commandArgs = str_replace('[SOURCE]', escapeshellarg($this->tempFileName), $this->commandArgs);
+    $commandArgs = str_replace('[TARGET]', escapeshellarg($this->pdfFileName), $commandArgs);
+    $commandArgs = str_replace('[MARGINS]', $margins, $commandArgs);
 
-    $this->command = $command;
+    $this->command = $command . ' ' . $commandArgs;
 
     return $this;
   }
