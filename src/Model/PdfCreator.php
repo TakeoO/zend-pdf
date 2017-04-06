@@ -14,9 +14,9 @@ use Zend\View\Renderer\PhpRenderer;
 class PdfCreator
 {
   /** @var string */
-  protected $commandArgs = 'wkhtmltopdf [SOURCE] [TARGET]';
+  protected $commandArgs = 'wkhtmltopdf [MARGINS] [SOURCE] [TARGET]';
 
-  protected $xvfb = 'xvfb-run --server-args="-screen 0, 1240x860x24"';
+  protected $xvfb = 'xvfb-run --server-args="-screen 0, 1024x760x24"';
 
   protected $marginCommand = ' --margin-%s %s';
 
@@ -46,7 +46,7 @@ class PdfCreator
   private $pdfFileName = null;
 
   /** @var string $tempPath */
-  private $tempPath = __DIR__ . '/../../tmp/html';
+  private $tempPath = '/tmp';
 
   /** @var bool */
   private $hasXvfb = true;
