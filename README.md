@@ -2,7 +2,10 @@
 
 Create pdf from view in ZendFramework 2
 
-Works on zend framework v2.4.*
+Works on zend framework v3.*
+
+IF you want to use it with older versions, use one of previous tags
+
 ## Requirements
 
  - wkhtmltopdf installed on your server
