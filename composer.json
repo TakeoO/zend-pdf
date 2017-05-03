@@ -8,7 +8,7 @@
     }
   ],
   "require": {
-    "zendframework/zend-view": "^2.6.*"
+    "zendframework/zend-view": "^2.6.3"
   },
   "autoload": {
     "psr-4": {
