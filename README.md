@@ -1,6 +1,6 @@
 # HTML to PDF for zend framework
 
-Create pdf from view in ZendFramework 2
+Create pdf from view in ZendFramework 3
 
 Works on zend framework v3.*
 
@@ -23,8 +23,8 @@ IF you want to use it with older versions, use one of previous tags
      ```bash
      sudo apt-get install xvfb
      ```
- - zend-view 2.4* is installed as dependency
- - zend-service-manager is already installed with 2.4 version of zf2.
+ - zend-view 2.3* is installed as dependency
+ - zend-service-manager is already installed with 3.* version of zf3.
  
  
 ## Install
