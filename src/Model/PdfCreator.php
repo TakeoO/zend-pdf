@@ -14,7 +14,7 @@ use Zend\View\Renderer\PhpRenderer;
 class PdfCreator
 {
   /** @var string */
-  protected $commandArgs = 'wkhtmltopdf [MARGINS] [SOURCE] [TARGET]';
+  protected $commandArgs = 'wkhtmltopdf [FOOTER] [MARGINS] [SOURCE] [TARGET]';
 
   protected $xvfb = 'xvfb-run --server-args="-screen 0, 1024x760x24"';
 
@@ -41,6 +41,15 @@ class PdfCreator
 
   /** @var null $html */
   private $html = null;
+
+  /** @var bool */
+  private $pageNumbering = false;
+
+  /** @var string */
+  private $footerHtml = '--footer-html "[PATH_TO_HTML]"';
+
+  /** @var string */
+  private $pageNumberingHtml = '';
 
   /** @var string $pdfFileName */
   private $pdfFileName = null;
@@ -94,6 +103,23 @@ class PdfCreator
   public function setLayoutTemplate ($layout)
   {
     $this->layoutTemplate = $layout;
+
+    return $this;
+  }
+
+  /**
+   * @return $this
+   */
+  public function addPageNumbering ()
+  {
+    $this->pageNumbering = true;
+
+    return $this;
+  }
+
+  public function setPageNumberingHtml (string $pathName)
+  {
+    $this->pageNumberingHtml = $pathName;
 
     return $this;
   }
@@ -233,7 +259,13 @@ class PdfCreator
       foreach ($this->margins as $position => $value)
         $margins .= sprintf($this->marginCommand, $position, $value);
 
-    $commandArgs = str_replace('[SOURCE]', escapeshellarg($this->tempFileName), $this->commandArgs);
+    $footer = "";
+    if ($this->pageNumbering) {
+      $footer = str_replace('[PATH_TO_HTML]', escapeshellarg($this->pageNumberingHtml), $this->footerHtml);
+    }
+
+    $commandArgs = str_replace('[FOOTER]', $footer, $this->commandArgs);
+    $commandArgs = str_replace('[SOURCE]', escapeshellarg($this->tempFileName), $commandArgs);
     $commandArgs = str_replace('[TARGET]', escapeshellarg($this->pdfFileName), $commandArgs);
     $commandArgs = str_replace('[MARGINS]', $margins, $commandArgs);
 
